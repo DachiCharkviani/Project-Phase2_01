@@ -3,7 +3,7 @@ class Book < ApplicationRecord
   has_many :book_authors
   has_many :authors, through: :book_authors
 
-  '''ruby
-  # scope that returns books in alphabetical order
-  '''
+  scope :alphabetical, -> { order('title')}
+  scope :last_decade, -> {where('year_published>?', 2011)}
+
 end

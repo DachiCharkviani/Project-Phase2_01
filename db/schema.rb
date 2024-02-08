@@ -30,11 +30,10 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_08_060351) do
   create_table "books", force: :cascade do |t|
     t.string "title"
     t.integer "year_published"
-    t.integer "publisher_id_id", null: false
-    t.string "Publisher"
+    t.integer "publisher_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["publisher_id_id"], name: "index_books_on_publisher_id_id"
+    t.index ["publisher_id"], name: "index_books_on_publisher_id"
   end
 
   create_table "publishers", force: :cascade do |t|
@@ -45,5 +44,5 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_08_060351) do
 
   add_foreign_key "book_authors", "authors"
   add_foreign_key "book_authors", "books"
-  add_foreign_key "books", "publisher_ids"
+  add_foreign_key "books", "publishers"
 end
